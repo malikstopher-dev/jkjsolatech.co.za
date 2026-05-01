@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JKJ Solartech and Security | Solar, Electrical & CCTV Services Johannesburg</title>
+    <meta name="description" content="JKJ Solartech and Security (Pty) Ltd provides solar backup power, electrical services, CCTV, access control, automated gates and network installations across Johannesburg and Gauteng.">
+    <meta name="keywords" content="solar installation Johannesburg, electrician Johannesburg, CCTV installation Johannesburg, access control Gauteng, automated gates Johannesburg, backup power systems, JKJ Solartech and Security">
+    <link rel="canonical" href="https://www.jkelectrical.co.za/">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=5">
+    <link rel="stylesheet" href="enhancements.css?v=5">
+</head>
+<body>
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Bulb Flash Overlay -->
+    <div class="bulb-flash-overlay" id="bulbFlash"></div>
+    
+    <!-- Flash Bulb SVG -->
+    <div class="flash-bulb" id="flashBulb">
+        <div class="bulb-rays">
+            <div class="ray" style="transform: rotate(0deg) translateY(-90px);"></div>
+            <div class="ray" style="transform: rotate(45deg) translateY(-90px);"></div>
+            <div class="ray" style="transform: rotate(90deg) translateY(-90px);"></div>
+            <div class="ray" style="transform: rotate(135deg) translateY(-90px);"></div>
+            <div class="ray" style="transform: rotate(180deg) translateY(-90px);"></div>
+            <div class="ray" style="transform: rotate(225deg) translateY(-90px);"></div>
+            <div class="ray" style="transform: rotate(270deg) translateY(-90px);"></div>
+            <div class="ray" style="transform: rotate(315deg) translateY(-90px);"></div>
+        </div>
+        <svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="flashBulbGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FFFFFF"/>
+                    <stop offset="50%" style="stop-color:#FFE066"/>
+                    <stop offset="100%" style="stop-color:#F5C300"/>
+                </linearGradient>
+            </defs>
+            <path d="M50 5 C30 5 20 25 20 45 C20 70 35 90 35 105 L65 105 C65 90 80 70 80 45 C80 25 70 5 50 5 Z" fill="url(#flashBulbGrad)"/>
+            <path d="M40 105 L40 115 L35 130 L65 130 L60 115 L60 105" fill="#F5C300"/>
+            <rect x="42" y="130" width="16" height="5" fill="#F5C300"/>
+            <rect x="45" y="135" width="10" height="3" fill="#F5C300"/>
+        </svg>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JKJ Solartech Logo" style="width:46px;height:46px;object-fit:contain;">
+                JKJ <span>Solartech</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="services.html">Services <span class="nav-arrow">&#9662;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="service-electrical.html">&#9889; Electrical Services</a></li>
+                        <li><a href="service-solar.html">&#9728;&#65039; Solar Systems</a></li>
+                        <li><a href="service-cctv.html">&#128249; CCTV &amp; Security</a></li>
+                        <li><a href="service-gates.html">&#128686; Automated Gates</a></li>
+                        <li><a href="service-access.html">&#128272; Access Control</a></li>
+                        <li><a href="service-smart.html">&#127968; Smart Systems</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary nav-cta">Get Free Quote</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose">
+            <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="service-electrical.html">&#8212; Electrical Services</a></li>
+            <li><a href="service-solar.html">&#8212; Solar Systems</a></li>
+            <li><a href="service-cctv.html">&#8212; CCTV &amp; Security</a></li>
+            <li><a href="service-gates.html">&#8212; Automated Gates</a></li>
+            <li><a href="service-access.html">&#8212; Access Control</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-grid"></div>
+            <div class="hero-glow"></div>
+            <div class="hero-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="lightning"></div>
+            <div class="lightning"></div>
+            <div class="lightning"></div>
+            <div class="lightning"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Registered company &#8226; Solar &#8226; Electrical &#8226; CCTV &#8226; Access Control
+                </div>
+                <h1>Powering Your Home.<br><span>Protecting Your Future.</span></h1>
+                <p>Professional solar, electrical and security solutions for homes, businesses and places of worship across Johannesburg and Gauteng.</p>
+                <div class="hero-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                        Get a Free Quote
+                    </a>
+                    <a href="services.html" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                        Explore Services
+                    </a>
+                </div>
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <span class="trust-icon">&#10003;</span> Registered Company
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">&#10003;</span> Johannesburg &amp; Gauteng
+                    </div>
+                    <div class="trust-item">
+                        <span class="trust-icon">&#10003;</span> Reliable Support
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-bulb">
+                    <svg viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="heroBulbGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FFE066"/>
+                                <stop offset="100%" style="stop-color:#F5C300"/>
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <path d="M50 5 C30 5 20 25 20 45 C20 70 35 90 35 105 L65 105 C65 90 80 70 80 45 C80 25 70 5 50 5 Z" fill="url(#heroBulbGrad)" filter="url(#glow)"/>
+                        <path d="M40 105 L40 115 L35 130 L65 130 L60 115 L60 105" fill="#F5C300"/>
+                        <rect x="42" y="130" width="16" height="5" fill="#F5C300"/>
+                        <rect x="45" y="135" width="10" height="3" fill="#F5C300"/>
+                        <path d="M35 50 L28 38 M50 32 L50 22 M65 50 L72 38 M75 65 L85 58 M25 65 L15 58" stroke="#FFE066" stroke-width="2" opacity="0.8"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <!-- Scroll indicator -->
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section section" id="services">
+        <div class="container">
+            <div class="section-label">What We Do</div>
+            <h2 class="section-title">Reliable Technical Services for <span>Modern Properties</span></h2>
+            <p class="section-subtitle">From backup power and solar installations to CCTV, automated gates and electrical maintenance, JKJ Solartech and Security delivers clean, safe and practical solutions built around your property&#8217;s needs.</p>
+            <div class="services-grid">
+                <a href="service-solar.html" class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
+                    </svg>
+                    <h3>Solar &amp; Backup Power</h3>
+                    <p>Solar panel installations, inverter systems, battery backup solutions and load-shedding-ready power setups for homes and businesses.</p>
+                    <span class="card-link">View Service &#8594;</span>
+                </a>
+                <a href="service-electrical.html" class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 017 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
+                    </svg>
+                    <h3>Electrical Services</h3>
+                    <p>Electrical repairs, wiring, lighting, DB board work, fault finding and general maintenance delivered with safety and neat workmanship.</p>
+                    <span class="card-link">View Service &#8594;</span>
+                </a>
+                <a href="service-cctv.html" class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M18 10.48V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.48l4 3.98v-11l-4 3.98zM16 18H4V6h12v12zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2zm0-8h-2v2h2V6z"/>
+                    </svg>
+                    <h3>CCTV &amp; Security Systems</h3>
+                    <p>Security camera installation, system setup, monitoring configuration and maintenance for residential and commercial properties.</p>
+                    <span class="card-link">View Service &#8594;</span>
+                </a>
+                <a href="service-gates.html" class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                    </svg>
+                    <h3>Automated Gates</h3>
+                    <p>Installation, repair and servicing of automated gate motors, remotes, sensors and gate access systems.</p>
+                    <span class="card-link">View Service &#8594;</span>
+                </a>
+                <a href="service-access.html" class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                    </svg>
+                    <h3>Access Control</h3>
+                    <p>Intercoms, keypad access, magnetic locks, electric locks and controlled entry solutions for safer property access.</p>
+                    <span class="card-link">View Service &#8594;</span>
+                </a>
+                <a href="service-smart.html" class="service-card reveal">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+                    </svg>
+                    <h3>Network &amp; Fibre Installations</h3>
+                    <p>LAN cabling, fibre-related internal wiring, router setup and basic network infrastructure for homes, offices and small businesses.</p>
+                    <span class="card-link">View Service &#8594;</span>
+                </a>
+            </div>
+            <div class="section-cta">
+                <a href="services.html" class="btn btn-secondary">View All Services</a>
+                <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us-section section" id="why-us">
+        <div class="container">
+            <div class="section-label">Why JKJ Solartech and Security</div>
+            <h2 class="section-title">Why Choose <span>JKJ Solartech and Security?</span></h2>
+            <p class="section-subtitle">Real expertise, reliable service and solutions that last &#8212; built for Johannesburg homes and businesses</p>
+            <div class="features-grid">
+                <div class="feature-item reveal">
+                    <div class="feature-icon">&#9889;</div>
+                    <h3>Fast Response</h3>
+                    <p>Quick, practical support for urgent electrical, power and security needs.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon">&#128274;</div>
+                    <h3>Reliable Workmanship</h3>
+                    <p>Clean installations, careful fault finding and solutions designed to last.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon">&#128736;&#65039;</div>
+                    <h3>Multi-Service Expertise</h3>
+                    <p>Solar, electrical, CCTV, access control, gates and networking handled under one trusted provider.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon">&#128205;</div>
+                    <h3>Johannesburg Coverage</h3>
+                    <p>Serving homes, businesses and places of worship across Johannesburg and surrounding Gauteng areas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-badges">
+                <div class="trust-badge reveal">
+                    <div class="badge-icon">&#127970;</div>
+                    <div class="badge-text">
+                        <strong>Residential &amp; Commercial</strong>
+                        <span>Solar &#8226; Electrical &#8226; Security</span>
+                    </div>
+                </div>
+                <div class="trust-badge reveal">
+                    <div class="badge-icon">&#9989;</div>
+                    <div class="badge-text">
+                        <strong>Registered Company</strong>
+                        <span>JKJ Solartech and Security (Pty) Ltd</span>
+                    </div>
+                </div>
+                <div class="trust-badge reveal">
+                    <div class="badge-icon">&#128205;</div>
+                    <div class="badge-text">
+                        <strong>Johannesburg &amp; Gauteng</strong>
+                        <span>Local Coverage &amp; Support</span>
+                    </div>
+                </div>
+                <div class="trust-badge reveal">
+                    <div class="badge-icon">&#128737;&#65039;</div>
+                    <div class="badge-text">
+                        <strong>Reliable Support</strong>
+                        <span>Professional &amp; Responsive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="about-section section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content reveal">
+                    <div class="section-label">About JKJ Solartech and Security</div>
+                    <h2>About <span>JKJ Solartech and Security</span></h2>
+                    <p>JKJ Solartech and Security (Pty) Ltd is a registered Johannesburg-based company providing solar, electrical and security solutions for residential and commercial clients.</p>
+                    <p>We help property owners improve safety, reduce downtime and prepare for load-shedding through reliable backup power systems, professional electrical work and practical security installations.</p>
+                    <p>Our work is guided by clean execution, honest communication and long-term reliability. Whether it is a small repair, a solar upgrade, CCTV installation or a complete security setup, we approach every project with care and professionalism.</p>
+                    <div class="quote-callout">
+                        <p>We power properties. We protect people. We build confidence.</p>
+                    </div>
+                    <div class="about-ctas">
+                        <a href="about.html" class="btn btn-secondary">Learn More About Us</a>
+                        <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+                    </div>
+                </div>
+                <div class="about-cred reveal">
+                    <div class="cred-card">
+                        <div class="cred-label">Services</div>
+                        <div class="cred-value">Solar · Electrical · Security</div>
+                    </div>
+                    <div class="cred-card">
+                        <div class="cred-label">Coverage</div>
+                        <div class="cred-value">Johannesburg &amp; Gauteng</div>
+                    </div>
+                    <div class="cred-card">
+                        <div class="cred-label">Registration</div>
+                        <div class="cred-value">2026/346956/07</div>
+                    </div>
+                    <div class="cred-card">
+                        <div class="cred-label">Support</div>
+                        <div class="cred-value">Professional &amp; Responsive</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Areas We Serve -->
+    <section class="areas-section section">
+        <div class="container">
+            <div class="section-label">Coverage</div>
+            <h2 class="section-title">Areas We <span>Serve</span></h2>
+            <p class="section-subtitle">Proudly serving homes and businesses across the Greater Johannesburg area and Gauteng</p>
+            <div class="areas-grid">
+                <div class="area-item reveal">Sandton</div>
+                <div class="area-item reveal">Randburg</div>
+                <div class="area-item reveal">Midrand</div>
+                <div class="area-item reveal">Kensington</div>
+                <div class="area-item reveal">Soweto</div>
+                <div class="area-item reveal">Roodepoort</div>
+                <div class="area-item reveal">Germiston</div>
+                <div class="area-item reveal">Edenvale</div>
+                <div class="area-item reveal">Fourways</div>
+                <div class="area-item reveal">Centurion</div>
+                <div class="area-item reveal">Boksburg</div>
+                <div class="area-item reveal">All Gauteng</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section section" id="testimonials">
+        <div class="container">
+            <div class="section-label">Client Reviews</div>
+            <h2 class="section-title">What Our <span>Clients Say</span></h2>
+            <p class="section-subtitle">Real feedback from satisfied homeowners and businesses across Johannesburg</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">&#8220;JKJ Solartech helped us with a backup power setup and explained everything clearly. The work was neat and professional.&#8221;</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CL</div>
+                        <div class="author-info">
+                            <h4>Client</h4>
+                            <span>Johannesburg</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">&#8220;Our CCTV and gate access setup was handled quickly and properly. The service was reliable from start to finish.&#8221;</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CL</div>
+                        <div class="author-info">
+                            <h4>Client</h4>
+                            <span>Randburg</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="testimonial-text">&#8220;They assisted with electrical repairs and gave honest advice. Professional, respectful and efficient.&#8221;</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CL</div>
+                        <div class="author-info">
+                            <h4>Client</h4>
+                            <span>Gauteng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency CTA Band -->
+    <section class="emergency-band">
+        <div class="container">
+            <div class="emergency-content">
+                <div class="emergency-icon">&#9889;</div>
+                <div class="emergency-text">
+                    <h3>Need Help With Your Property?</h3>
+                    <p>Contact us for practical guidance on solar, electrical, security and networking solutions</p>
+                </div>
+                <div class="emergency-actions">
+                    <a href="tel:+27840178527" class="btn btn-primary">Call Now: 084 017 8527</a>
+                    <a href="https://wa.me/27840178527" target="_blank" class="btn btn-whatsapp">
+                        <svg viewBox="0 0 24 24" width="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-section section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form reveal">
+                    <div class="section-label">Free Quote</div>
+                    <h2>Request a <span>Free Quote</span></h2>
+                    <p>Tell us what you need help with and we&#8217;ll respond with practical guidance and a clear next step.</p>
+                    <form id="contactForm" action="https://formsubmit.co/junior@jkjsolartech.co.za" method="POST">
+                        <input type="hidden" name="_subject" value="New Quote Request - JKJ Solartech and Security Website">
+                        <input type="hidden" name="_next" value="thank-you.html">
+                        <input type="hidden" name="_captcha" value="false">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Type *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="solar">Solar &amp; Backup Power</option>
+                                <option value="electrical">Electrical Services</option>
+                                <option value="cctv">CCTV &amp; Security Systems</option>
+                                <option value="gates">Automated Gates</option>
+                                <option value="access">Access Control</option>
+                                <option value="network">Network &amp; Fibre Installations</option>
+                                <option value="maintenance">General Maintenance</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your project or issue..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" width="20" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                            Send Quote Request
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-info reveal">
+                    <div class="info-card">
+                        <h3>Contact Details</h3>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            <a href="tel:+27840178527">084 017 8527</a>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <a href="mailto:junior@jkjsolartech.co.za">junior@jkjsolartech.co.za</a>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            <span>Johannesburg, Gauteng</span>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                            <span>Mon&#8211;Sat 7am&#8211;6pm</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/27840178527" class="whatsapp-btn" target="_blank">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Chat on WhatsApp
+                    </a>
+                    <div class="response-badge">
+                        <span class="response-dot"></span>
+                        Typical response within 2 hours
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="logo.png" alt="JKJ Solartech and Security Logo" style="width:38px;height:38px;object-fit:contain;">
+                        JKJ <span>Solartech</span>
+                    </a>
+                    <p>Registered Johannesburg company providing solar, electrical, CCTV, access control, automated gate and network installation services across Gauteng.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://wa.me/27840178527" aria-label="WhatsApp" target="_blank">
+                            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="service-electrical.html">Electrical Services</a></li>
+                        <li><a href="service-solar.html">Solar Systems</a></li>
+                        <li><a href="service-cctv.html">CCTV &amp; Security</a></li>
+                        <li><a href="service-gates.html">Automated Gates</a></li>
+                        <li><a href="service-access.html">Access Control</a></li>
+                        <li><a href="service-smart.html">Smart Systems</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+27840178527">084 017 8527</a></li>
+                        <li><a href="mailto:junior@jkjsolartech.co.za">junior@jkjsolartech.co.za</a></li>
+                        <li><a href="#">Johannesburg, Gauteng</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JKJ Solartech and Security (Pty) Ltd. All rights reserved. | Company Registration No: 2026/346956/07 | <a href="#">Privacy Policy</a> | Website by <a href="https://www.stopher-malik.co.za" target="_blank" rel="noopener">Stopher Malik</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Widget -->
+    <a href="https://wa.me/27840178527" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="whatsapp-float-tooltip">Chat with us!</span>
+    </a>
+
+    <script src="script.js?v=3"></script>
+    <script src="enhancements.js?v=3"></script>
+</body>
+</html>

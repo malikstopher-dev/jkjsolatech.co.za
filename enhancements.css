@@ -1,0 +1,44 @@
+/* ========================================
+   JKJ SOLARTECH - ENHANCEMENTS CSS
+   Extends styles.css with additional utility
+   and component overrides
+   ======================================== */
+
+/* Mobile menu sub-items */
+.mobile-menu li a[href*="service-"] {
+    font-size: 0.95rem !important;
+    font-weight: 400 !important;
+    color: var(--text-muted) !important;
+    opacity: 0.7;
+}
+
+/* Quick contact bar on contact page */
+.contact-quick-section {
+    padding: 36px 0;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(13, 13, 13, 0.7) 100%);
+    border-bottom: 1px solid rgba(245, 195, 0, 0.06);
+}
+
+/* Sidebar CTA block */
+.sidebar-cta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+/* WhatsApp button centering for contact page */
+.whatsapp-btn {
+    text-align: center;
+    justify-content: center;
+}
+
+/* Info item hover */
+.info-item a {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.info-item a:hover {
+    color: var(--primary-yellow);
+}
