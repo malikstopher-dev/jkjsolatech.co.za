@@ -4,12 +4,193 @@
    and component overrides
    ======================================== */
 
-/* Mobile menu sub-items */
-.mobile-menu li a[href*="service-"] {
-    font-size: 0.95rem !important;
+/* Mobile menu improvements */
+.mobile-menu {
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu.active {
+    box-shadow: -10px 0 60px rgba(0, 0, 0, 0.7);
+}
+
+.mobile-menu ul li a {
+    position: relative;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.mobile-menu ul li a:hover {
+    padding-left: 8px;
+}
+
+.mobile-menu ul li a[href*="service-"] {
+    font-size: 0.9rem !important;
     font-weight: 400 !important;
     color: var(--text-muted) !important;
-    opacity: 0.7;
+    opacity: 0.8;
+    padding-left: 24px !important;
+}
+
+.mobile-menu ul li a[href*="service-"]:hover {
+    color: var(--primary-yellow) !important;
+    opacity: 1;
+}
+
+/* Close button enhancement */
+.mobile-close {
+    transition: transform 0.3s ease;
+}
+
+.mobile-close:hover {
+    transform: rotate(90deg);
+}
+
+/* Quick contact bar on contact page */
+.contact-quick-section {
+    padding: 36px 0;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(13, 13, 13, 0.7) 100%);
+    border-bottom: 1px solid rgba(245, 195, 0, 0.06);
+}
+
+/* Sidebar CTA block */
+.sidebar-cta-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* WhatsApp button centering for contact page */
+.whatsapp-btn {
+    text-align: center;
+    justify-content: center;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+/* Info item hover */
+.info-item {
+    padding: 4px 0;
+    transition: transform 0.2s ease;
+}
+
+.info-item:hover {
+    transform: translateX(4px);
+}
+
+.info-item a {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.info-item a:hover {
+    color: var(--primary-yellow);
+}
+
+/* Page header enhancements */
+.page-header h1 {
+    position: relative;
+    display: inline-block;
+}
+
+.page-header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-yellow);
+    opacity: 0.6;
+}
+
+/* Improved form focus states */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    box-shadow: 0 0 0 3px rgba(245, 195, 0, 0.15), 0 0 20px rgba(245, 195, 0, 0.08);
+}
+
+/* Testimonial card improvements */
+.testimonial-card {
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 3rem;
+    color: rgba(245, 195, 0, 0.08);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+/* Footer improvements */
+.footer-column ul li {
+    transition: transform 0.2s ease;
+}
+
+.footer-column ul li:hover {
+    transform: translateX(4px);
+}
+
+/* Hero badge enhancement */
+.hero-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(245, 195, 0, 0.1), transparent);
+    animation: badgeShimmer 3s infinite;
+}
+
+@keyframes badgeShimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Responsive stats */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .stat-card::after {
+        display: none;
+    }
+    
+    .stat-number {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    
+    .stat-card {
+        padding: 20px 10px;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
 }
 
 /* Quick contact bar on contact page */

@@ -1,4 +1,4 @@
-// JK Electricity - JavaScript
+// JKJ Solartech and Security - JavaScript
 
 // ========================================
 // BULB FLASH ANIMATION
@@ -24,97 +24,6 @@ function triggerBulbFlash() {
 }
 
 // ========================================
-// CLICK RIPPLE EFFECT
-// ========================================
-document.addEventListener('click', function(e) {
-    // Only create ripple for left clicks on interactive elements
-    if (e.button !== 0) return;
-    if (e.target.closest('button') || e.target.closest('a') === null) return;
-    
-    const ripple = document.createElement('div');
-    ripple.className = 'click-ripple';
-    ripple.style.left = e.clientX + 'px';
-    ripple.style.top = e.clientY + 'px';
-    
-    for (let i = 0; i < 3; i++) {
-        const ring = document.createElement('div');
-        ring.className = 'ripple-ring';
-        ring.style.animationDelay = (i * 0.1) + 's';
-        ripple.appendChild(ring);
-    }
-    
-    for (let i = 0; i < 8; i++) {
-        const spike = document.createElement('div');
-        spike.className = 'ripple-spike';
-        const angle = (i / 8) * 360;
-        const distance = 20 + Math.random() * 30;
-        spike.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translateY(-${distance}px)`;
-        spike.style.animationDelay = (Math.random() * 0.2) + 's';
-        ripple.appendChild(spike);
-    }
-    
-    document.body.appendChild(ripple);
-    
-    setTimeout(() => {
-        ripple.remove();
-    }, 500);
-});
-
-// ========================================
-// PAGE NAVIGATION - BULB FLASH
-// ========================================
-document.querySelectorAll('a[href$=".html"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        
-        if (this.closest('form')) return;
-        
-        if (href && !href.startsWith('http') && !href.startsWith('//')) {
-            e.preventDefault();
-            
-            triggerBulbFlash();
-            
-            setTimeout(() => {
-                window.location.href = href;
-            }, 400);
-        }
-    });
-});
-
-// ========================================
-// SMOOTH SCROLL FOR ANCHOR LINKS
-// ========================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            triggerBulbFlash();
-            setTimeout(() => {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }, 400);
-        }
-    });
-});
-
-// ========================================
-// NAVBAR SCROLL EFFECT
-// ========================================
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-});
-
-// ========================================
 // MOBILE MENU
 // ========================================
 const menuToggle = document.getElementById('menuToggle');
@@ -123,19 +32,22 @@ const mobileOverlay = document.getElementById('mobileOverlay');
 const mobileClose = document.getElementById('mobileClose');
 
 function openMobileMenu() {
-    mobileMenu.classList.add('active');
-    mobileOverlay.classList.add('active');
+    if (mobileMenu) mobileMenu.classList.add('active');
+    if (mobileOverlay) mobileOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
 function closeMobileMenu() {
-    mobileMenu.classList.remove('active');
-    mobileOverlay.classList.remove('active');
+    if (mobileMenu) mobileMenu.classList.remove('active');
+    if (mobileOverlay) mobileOverlay.classList.remove('active');
     document.body.style.overflow = '';
 }
 
 if (menuToggle) {
-    menuToggle.addEventListener('click', openMobileMenu);
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openMobileMenu();
+    });
 }
 
 if (mobileClose) {
@@ -147,14 +59,53 @@ if (mobileOverlay) {
 }
 
 document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', function() {
-        closeMobileMenu();
+    link.addEventListener('click', () => closeMobileMenu());
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMobileMenu();
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) closeMobileMenu();
+});
+
+// ========================================
+// PAGE NAVIGATION - BULB FLASH
+// ========================================
+document.querySelectorAll('a[href$=".html"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (this.closest('form')) return;
+        if (href && !href.startsWith('http') && !href.startsWith('//')) {
+            e.preventDefault();
+            triggerBulbFlash();
+            setTimeout(() => { window.location.href = href; }, 400);
+        }
     });
 });
 
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeMobileMenu();
+// ========================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ========================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            triggerBulbFlash();
+            setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 400);
+        }
+    });
+});
+
+// ========================================
+// NAVBAR SCROLL EFFECT
+// ========================================
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
     }
 });
 
@@ -165,11 +116,8 @@ const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal
 
 function checkReveal() {
     const triggerBottom = window.innerHeight * 0.85;
-    
     revealElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        
-        if (elementTop < triggerBottom) {
+        if (element.getBoundingClientRect().top < triggerBottom) {
             element.classList.add('active');
         }
     });
@@ -195,10 +143,10 @@ function animateCounters() {
         const updateCounter = () => {
             current += step;
             if (current < target) {
-                stat.textContent = Math.floor(current) + '+';
+                stat.textContent = Math.floor(current) + (target >= 100 ? '%' : '+');
                 requestAnimationFrame(updateCounter);
             } else {
-                stat.textContent = target + '+';
+                stat.textContent = target + (target >= 100 ? '%' : '+');
             }
         };
 
@@ -229,7 +177,6 @@ if (contactForm) {
             triggerBulbFlash();
             return;
         }
-        
         e.preventDefault();
         triggerBulbFlash();
         setTimeout(() => {
@@ -242,8 +189,6 @@ if (contactForm) {
 // ========================================
 // INITIAL PAGE LOAD FLASH
 // ========================================
-window.addEventListener('load', function() {
-    setTimeout(() => {
-        triggerBulbFlash();
-    }, 300);
+window.addEventListener('load', () => {
+    setTimeout(triggerBulbFlash, 300);
 });
