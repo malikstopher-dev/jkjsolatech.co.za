@@ -244,3 +244,31 @@
     height: 20px;
     fill: var(--white);
 }
+
+/* Form Success Message */
+.form-success {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(160deg, rgba(18, 18, 42, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
+    border: 1px solid rgba(245, 195, 0, 0.15);
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.form-success .success-icon {
+    font-size: 3rem;
+    color: #22c55e;
+    margin-bottom: 16px;
+}
+
+.form-success h3 {
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.form-success p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
