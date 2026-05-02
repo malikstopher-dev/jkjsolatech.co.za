@@ -327,46 +327,54 @@
         <span class="whatsapp-float-tooltip">Chat with us!</span>
     </a>
 
-    <!-- Contact Form API Handler -->
     <script>
-    document.getElementById('contactForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        var submitBtn = document.querySelector('#contactForm button[type="submit"]');
-        var originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = 'Sending...';
-        submitBtn.disabled = true;
-        
-        var formData = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            area: document.getElementById('area').value,
-            service: document.getElementById('service').value,
-            message: document.getElementById('message').value
-        };
-        
-        try {
-            var response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            });
-            
-            if (response.ok) {
-                alert('Request sent successfully. We'll contact you shortly.');
-                document.getElementById('contactForm').reset();
-            } else {
-                alert('Email failed. Please use WhatsApp.');
-            }
-        } catch (error) {
-            alert('Something went wrong. Please use WhatsApp instead.');
-        }
-        
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    });
-    </script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const button = form.querySelector("button[type='submit']");
+    const originalText = button.innerHTML;
+
+    const formData = {
+      name: document.getElementById("name")?.value || "",
+      phone: document.getElementById("phone")?.value || "",
+      email: document.getElementById("email")?.value || "",
+      area: document.getElementById("area")?.value || "",
+      service: document.getElementById("service")?.value || "",
+      message: document.getElementById("message")?.value || ""
+    };
+
+    button.disabled = true;
+    button.innerHTML = "Sending...";
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        alert("Request sent successfully. We will contact you shortly.");
+        form.reset();
+      } else {
+        alert("Email failed. Please use the WhatsApp button below.");
+      }
+    } catch (error) {
+      alert("Network error. Please use the WhatsApp button below.");
+    } finally {
+      button.disabled = false;
+      button.innerHTML = originalText;
+    }
+  });
+});
+</script>
 
     <script src="script.js?v=4"></script>
     <script src="enhancements.js?v=4"></script>
