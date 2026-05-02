@@ -327,40 +327,54 @@
         <span class="whatsapp-float-tooltip">Chat with us!</span>
     </a>
 
-    <!-- Contact Form WhatsApp Handler -->
+    <!-- Contact Form API Handler -->
     <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        var name = document.getElementById('name').value;
-        var phone = document.getElementById('phone').value;
-        var email = document.getElementById('email').value || 'Not provided';
-        var area = document.getElementById('area').value || 'Not provided';
-        var service = document.getElementById('service').value || 'Not specified';
-        var message = document.getElementById('message').value || 'No details provided';
+        var submitBtn = document.querySelector('#contactForm button[type="submit"]');
+        var originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+        submitBtn.disabled = true;
         
-        var whatsappMessage = 'New Quote Request - JKJ Solartech\n\n' +
-            'Name: ' + name + '\n' +
-            'Phone: ' + phone + '\n' +
-            'Email: ' + email + '\n' +
-            'Area: ' + area + '\n' +
-            'Service: ' + service + '\n' +
-            'Project Details: ' + message;
+        var formData = {
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            area: document.getElementById('area').value,
+            service: document.getElementById('service').value,
+            message: document.getElementById('message').value
+        };
         
-        var encodedMessage = encodeURIComponent(whatsappMessage);
-        var whatsappUrl = 'https://wa.me/27840178527?text=' + encodedMessage;
+        try {
+            var response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+            
+            if (response.ok) {
+                var form = document.getElementById('contactForm');
+                var successDiv = document.getElementById('formSuccess');
+                form.style.display = 'none';
+                successDiv.style.display = 'block';
+            } else {
+                alert('Email failed. Opening WhatsApp as backup...');
+                var whatsappMessage = 'New Quote Request - JKJ Solartech\n\n' +
+                    'Name: ' + formData.name + '\n' +
+                    'Phone: ' + formData.phone + '\n' +
+                    'Email: ' + (formData.email || 'Not provided') + '\n' +
+                    'Area: ' + (formData.area || 'Not provided') + '\n' +
+                    'Service: ' + (formData.service || 'Not specified') + '\n' +
+                    'Project Details: ' + (formData.message || 'No details provided');
+                window.open('https://wa.me/27840178527?text=' + encodeURIComponent(whatsappMessage), '_blank');
+            }
+        } catch (error) {
+            alert('Something went wrong. Please use WhatsApp instead.');
+        }
         
-        // Show success message
-        var form = document.getElementById('contactForm');
-        var successDiv = document.getElementById('formSuccess');
-        
-        form.style.display = 'none';
-        successDiv.style.display = 'block';
-        
-        // Open WhatsApp after short delay
-        setTimeout(function() {
-            window.open(whatsappUrl, '_blank');
-        }, 1500);
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
     });
     </script>
 
