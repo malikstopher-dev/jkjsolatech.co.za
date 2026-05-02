@@ -38,29 +38,7 @@ function applyStaggeredReveal() {
 }
 applyStaggeredReveal();
 
-// ========================================
-// FORM ENHANCEMENT - WhatsApp fallback
-// ========================================
-const forms = document.querySelectorAll('#contactForm');
-forms.forEach(form => {
-    // If no action attribute (local dev), intercept and use WhatsApp
-    form.addEventListener('submit', function(e) {
-        // Only intercept if no formsubmit action set
-        if (!this.action || this.action.includes('localhost') || this.action === window.location.href) {
-            e.preventDefault();
-            const name = this.querySelector('[name="name"]')?.value || '';
-            const phone = this.querySelector('[name="phone"]')?.value || '';
-            const service = this.querySelector('[name="service"]')?.value || '';
-            const message = this.querySelector('[name="message"]')?.value || '';
-            
-            const waMsg = encodeURIComponent(
-                `Hi JKJ Solartech! I'd like a quote.\n\nName: ${name}\nPhone: ${phone}\nService: ${service}\nMessage: ${message}`
-            );
-            
-            window.open(`https://wa.me/27840178527?text=${waMsg}`, '_blank');
-        }
-    });
-});
+
 
 
 
