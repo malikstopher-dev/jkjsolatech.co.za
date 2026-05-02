@@ -193,33 +193,54 @@
     }
 }
 
-/* Quick contact bar on contact page */
-.contact-quick-section {
-    padding: 36px 0;
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(13, 13, 13, 0.7) 100%);
-    border-bottom: 1px solid rgba(245, 195, 0, 0.06);
-}
 
-/* Sidebar CTA block */
-.sidebar-cta-block {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 16px;
-}
 
-/* WhatsApp button centering for contact page */
-.whatsapp-btn {
+/* Form note styling */
+.form-note {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-top: 12px;
     text-align: center;
+}
+
+/* WhatsApp CTA section */
+.whatsapp-cta {
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(245, 195, 0, 0.1);
+    text-align: center;
+}
+
+.whatsapp-cta p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+.whatsapp-cta .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #25D366, #20BD5A);
+    color: var(--white);
+    padding: 14px 28px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
-/* Info item hover */
-.info-item a {
-    color: var(--text-light);
-    transition: color 0.3s ease;
+.whatsapp-cta .btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
 }
 
-.info-item a:hover {
-    color: var(--primary-yellow);
+.whatsapp-cta .btn-whatsapp svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--white);
 }
