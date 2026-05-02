@@ -354,20 +354,10 @@
             });
             
             if (response.ok) {
-                var form = document.getElementById('contactForm');
-                var successDiv = document.getElementById('formSuccess');
-                form.style.display = 'none';
-                successDiv.style.display = 'block';
+                alert('Request sent successfully. We'll contact you shortly.');
+                document.getElementById('contactForm').reset();
             } else {
-                alert('Email failed. Opening WhatsApp as backup...');
-                var whatsappMessage = 'New Quote Request - JKJ Solartech\n\n' +
-                    'Name: ' + formData.name + '\n' +
-                    'Phone: ' + formData.phone + '\n' +
-                    'Email: ' + (formData.email || 'Not provided') + '\n' +
-                    'Area: ' + (formData.area || 'Not provided') + '\n' +
-                    'Service: ' + (formData.service || 'Not specified') + '\n' +
-                    'Project Details: ' + (formData.message || 'No details provided');
-                window.open('https://wa.me/27840178527?text=' + encodeURIComponent(whatsappMessage), '_blank');
+                alert('Email failed. Please use WhatsApp.');
             }
         } catch (error) {
             alert('Something went wrong. Please use WhatsApp instead.');
