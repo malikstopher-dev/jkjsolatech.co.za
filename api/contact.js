@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
     const result = await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: ["info@jkjsolatech.co.za"],
+      to: ["malikstopher@gmail.com"],
       subject: `New Quote Request - ${name || "Website Lead"}`,
       reply_to: email || undefined,
       html: `
