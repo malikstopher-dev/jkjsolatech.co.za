@@ -71,6 +71,40 @@ window.addEventListener('resize', () => {
 });
 
 // ========================================
+// SERVICES DROPDOWN TOGGLE (Mobile)
+// ========================================
+function initServicesDropdown() {
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu .nav-dropdown > a');
+    
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 1024) {
+                e.preventDefault();
+                const dropdown = this.closest('.nav-dropdown');
+                dropdown.classList.toggle('open');
+            }
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 1024) {
+            const openDropdowns = document.querySelectorAll('.mobile-menu .nav-dropdown.open');
+            openDropdowns.forEach(dropdown => {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
+            });
+        }
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initServicesDropdown);
+} else {
+    initServicesDropdown();
+}
+
+// ========================================
 // PAGE NAVIGATION - BULB FLASH
 // ========================================
 document.querySelectorAll('a[href$=".html"]').forEach(link => {
