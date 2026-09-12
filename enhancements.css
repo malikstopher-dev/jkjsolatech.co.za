@@ -1,8 +1,4 @@
-/* ========================================
-   JKJ SOLARTECH - ENHANCEMENTS CSS
-   Extends styles.css with additional utility
-   and component overrides
-   ======================================== */
+/* JKJ Solartech and Security - Enhancements */
 
 /* Mobile menu improvements */
 .mobile-menu {
@@ -22,19 +18,6 @@
     padding-left: 8px;
 }
 
-.mobile-menu ul li a[href*="service-"] {
-    font-size: 0.9rem !important;
-    font-weight: 400 !important;
-    color: var(--text-muted) !important;
-    opacity: 0.8;
-    padding-left: 24px !important;
-}
-
-.mobile-menu ul li a[href*="service-"]:hover {
-    color: var(--primary-yellow) !important;
-    opacity: 1;
-}
-
 /* Close button enhancement */
 .mobile-close {
     transition: transform 0.3s ease;
@@ -48,23 +31,7 @@
 .contact-quick-section {
     padding: 36px 0;
     background: linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(13, 13, 13, 0.7) 100%);
-    border-bottom: 1px solid rgba(245, 195, 0, 0.06);
-}
-
-/* Sidebar CTA block */
-.sidebar-cta-block {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-/* WhatsApp button centering for contact page */
-.whatsapp-btn {
-    text-align: center;
-    justify-content: center;
-    font-weight: 700;
-    letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(212, 168, 67, 0.06);
 }
 
 /* Info item hover */
@@ -75,15 +42,6 @@
 
 .info-item:hover {
     transform: translateX(4px);
-}
-
-.info-item a {
-    color: var(--text-light);
-    transition: color 0.3s ease;
-}
-
-.info-item a:hover {
-    color: var(--primary-yellow);
 }
 
 /* Page header enhancements */
@@ -100,7 +58,7 @@
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: var(--primary-yellow);
+    background: var(--gold);
     opacity: 0.6;
 }
 
@@ -108,23 +66,7 @@
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    box-shadow: 0 0 0 3px rgba(245, 195, 0, 0.15), 0 0 20px rgba(245, 195, 0, 0.08);
-}
-
-/* Testimonial card improvements */
-.testimonial-card {
-    position: relative;
-}
-
-.testimonial-card::before {
-    content: '\201C';
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    font-size: 3rem;
-    color: rgba(245, 195, 0, 0.08);
-    font-family: Georgia, serif;
-    line-height: 1;
+    box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.15), 0 0 20px rgba(212, 168, 67, 0.08);
 }
 
 /* Footer improvements */
@@ -149,7 +91,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(245, 195, 0, 0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.1), transparent);
     animation: badgeShimmer 3s infinite;
 }
 
@@ -158,61 +100,16 @@
     100% { left: 100%; }
 }
 
-/* Responsive stats */
-@media (max-width: 768px) {
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    
-    .stat-card::after {
-        display: none;
-    }
-    
-    .stat-number {
-        font-size: 2.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-    }
-    
-    .stat-card {
-        padding: 20px 10px;
-    }
-    
-    .stat-number {
-        font-size: 1.8rem;
-    }
-    
-    .stat-label {
-        font-size: 0.75rem;
-    }
-}
-
-
-
-/* Form note styling */
-.form-note {
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    margin-top: 12px;
-    text-align: center;
-}
-
 /* WhatsApp CTA section */
 .whatsapp-cta {
     margin-top: 30px;
     padding-top: 24px;
-    border-top: 1px solid rgba(245, 195, 0, 0.1);
+    border-top: 1px solid rgba(212, 168, 67, 0.1);
     text-align: center;
 }
 
 .whatsapp-cta p {
-    color: var(--text-muted);
+    color: var(--muted);
     font-size: 0.95rem;
     margin-bottom: 16px;
 }
@@ -228,7 +125,7 @@
     text-decoration: none;
     font-weight: 700;
     font-size: 0.85rem;
-    border-radius: 8px;
+    border-radius: var(--radius);
     transition: var(--transition-smooth);
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -243,32 +140,4 @@
     width: 20px;
     height: 20px;
     fill: var(--white);
-}
-
-/* Form Success Message */
-.form-success {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(160deg, rgba(18, 18, 42, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
-    border: 1px solid rgba(245, 195, 0, 0.15);
-    border-radius: 12px;
-    margin-top: 20px;
-}
-
-.form-success .success-icon {
-    font-size: 3rem;
-    color: #22c55e;
-    margin-bottom: 16px;
-}
-
-.form-success h3 {
-    font-size: 1.4rem;
-    color: var(--white);
-    margin-bottom: 8px;
-    font-weight: 700;
-}
-
-.form-success p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
 }
