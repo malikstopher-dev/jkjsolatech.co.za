@@ -2685,7 +2685,7 @@ button {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
 }
 
 .hero-bg .hero-slide.active {
@@ -2709,74 +2709,166 @@ button {
   opacity: 0;
 }
 
-.hero-spark.dark {
-  animation: sparkDark 1.2s ease-in-out forwards;
-}
-
-.hero-spark.flash {
-  animation: sparkFlash 1.2s ease-in-out forwards;
-}
-
+/* Dark curtain overlay */
 .hero-spark::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(5, 7, 10, 0.95);
+  background: #05070a;
   opacity: 0;
 }
 
-.hero-spark.dark::before {
-  animation: sparkCurtain 1.2s ease-in-out forwards;
-}
-
+/* Central spark orb */
 .hero-spark::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 0;
-  height: 0;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 168, 67, 1) 0%, rgba(212, 168, 67, 0.6) 30%, rgba(255, 255, 255, 0.9) 50%, rgba(212, 168, 67, 0.3) 70%, transparent 100%);
-  transform: translate(-50%, -50%);
+  background: #fff;
+  box-shadow:
+    0 0 20px 10px rgba(212, 168, 67, 1),
+    0 0 60px 30px rgba(212, 168, 67, 0.8),
+    0 0 120px 60px rgba(212, 168, 67, 0.5),
+    0 0 200px 100px rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%) scale(0);
   opacity: 0;
 }
 
-.hero-spark.flash::after {
-  animation: sparkBurst 1.2s ease-out forwards;
+/* Phase 1: Dark curtain rises */
+.hero-spark.phase1::before {
+  animation: curtainRise 2s ease-in-out forwards;
 }
 
-@keyframes sparkCurtain {
+/* Phase 2: Spark burst */
+.hero-spark.phase2::after {
+  animation: sparkBurst 1.6s ease-out forwards;
+}
+
+/* Phase 3: Flash and fade */
+.hero-spark.phase3::before {
+  animation: curtainFall 1.4s ease-in-out forwards;
+}
+
+/* Shake on the hero container */
+.hero-bg.spark-shake {
+  animation: heroShake 0.4s ease-out;
+}
+
+/* Horizontal light streak */
+.hero-spark .spark-streak {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 1), rgba(255, 255, 255, 1), rgba(212, 168, 67, 1), transparent);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-spark.phase2 .spark-streak {
+  animation: streakExpand 1s 0.1s ease-out forwards;
+}
+
+/* Vertical light streak */
+.hero-spark .spark-streak-v {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(180deg, transparent, rgba(212, 168, 67, 1), rgba(255, 255, 255, 1), rgba(212, 168, 67, 1), transparent);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-spark.phase2 .spark-streak-v {
+  animation: streakExpandV 1s 0.1s ease-out forwards;
+}
+
+/* Expanding ring */
+.hero-spark .spark-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(212, 168, 67, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-spark.phase2 .spark-ring {
+  animation: ringExpand 1.2s 0.15s ease-out forwards;
+}
+
+@keyframes curtainRise {
   0%   { opacity: 0; }
-  15%  { opacity: 0.95; }
-  50%  { opacity: 0.95; }
-  70%  { opacity: 0.6; }
+  40%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes curtainFall {
+  0%   { opacity: 1; }
+  30%  { opacity: 0.8; }
   100% { opacity: 0; }
 }
 
 @keyframes sparkBurst {
-  0%   { width: 0; height: 0; opacity: 0; }
-  20%  { width: 0; height: 0; opacity: 0; }
-  35%  { width: 120px; height: 120px; opacity: 1; }
-  50%  { width: 800px; height: 800px; opacity: 0.8; }
-  65%  { width: 2000px; height: 2000px; opacity: 0.3; }
-  100% { width: 3000px; height: 3000px; opacity: 0; }
+  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  10%  { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  25%  { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+  50%  { transform: translate(-50%, -50%) scale(40); opacity: 0.6; }
+  70%  { transform: translate(-50%, -50%) scale(80); opacity: 0.2; }
+  100% { transform: translate(-50%, -50%) scale(120); opacity: 0; }
 }
 
-@keyframes sparkDark {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
+@keyframes streakExpand {
+  0%   { width: 0; opacity: 0; }
+  15%  { width: 0; opacity: 1; }
+  50%  { width: 100vw; opacity: 1; }
+  100% { width: 100vw; opacity: 0; }
+}
+
+@keyframes streakExpandV {
+  0%   { height: 0; opacity: 0; }
+  15%  { height: 0; opacity: 1; }
+  50%  { height: 100vh; opacity: 1; }
+  100% { height: 100vh; opacity: 0; }
+}
+
+@keyframes ringExpand {
+  0%   { width: 10px; height: 10px; opacity: 1; border-width: 3px; }
+  50%  { opacity: 0.6; border-width: 1px; }
+  100% { width: 150vw; height: 150vw; opacity: 0; border-width: 0.5px; }
+}
+
+@keyframes heroShake {
+  0%   { transform: translate(0, 0); }
+  15%  { transform: translate(-3px, 2px); }
+  30%  { transform: translate(3px, -2px); }
+  45%  { transform: translate(-2px, -1px); }
+  60%  { transform: translate(2px, 1px); }
+  75%  { transform: translate(-1px, 0); }
+  100% { transform: translate(0, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-spark.dark,
-  .hero-spark.flash {
+  .hero-spark.phase1::before,
+  .hero-spark.phase2::after,
+  .hero-spark.phase3::before,
+  .hero-spark.phase2 .spark-streak,
+  .hero-spark.phase2 .spark-streak-v,
+  .hero-spark.phase2 .spark-ring,
+  .hero-bg.spark-shake {
     animation: none !important;
-  }
-  .hero-spark.dark::before,
-  .hero-spark.flash::after {
-    animation: none !important;
-    opacity: 0 !important;
   }
 }
 

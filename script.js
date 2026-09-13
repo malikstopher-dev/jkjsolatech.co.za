@@ -445,11 +445,30 @@ function initHeroSlider() {
   var totalSlides = slides.length;
   var current = 0;
   var interval = null;
-  var INTERVAL_MS = 5500;
+  var INTERVAL_MS = 6000;
   var paused = false;
   var transitioning = false;
 
   if (totalSlides < 2) return;
+
+  // Build spark child elements once
+  if (spark) {
+    var streak = document.createElement('div');
+    streak.className = 'spark-streak';
+    spark.appendChild(streak);
+    var streakV = document.createElement('div');
+    streakV.className = 'spark-streak-v';
+    spark.appendChild(streakV);
+    var ring = document.createElement('div');
+    ring.className = 'spark-ring';
+    spark.appendChild(ring);
+  }
+
+  function clearSpark() {
+    if (!spark) return;
+    spark.classList.remove('phase1', 'phase2', 'phase3');
+    bg.classList.remove('spark-shake');
+  }
 
   function goTo(index) {
     if (index === current || transitioning) return;
@@ -457,19 +476,15 @@ function initHeroSlider() {
 
     var nextIdx = (index + totalSlides) % totalSlides;
 
-    // Remove previous spark classes
-    if (spark) {
-      spark.classList.remove('dark', 'flash');
-    }
-
-    // Phase 1: dark curtain + hide current slide
     if (spark && !prefersReducedMotion()) {
-      // Force reflow so animation restarts
+      clearSpark();
+
+      // Phase 1: Dark curtain rises
       void spark.offsetWidth;
-      spark.classList.add('dark');
+      spark.classList.add('phase1');
 
       setTimeout(function () {
-        // Swap slides while dark
+        // Swap slides while fully dark
         slides[current].classList.remove('active');
         if (dots[current]) {
           dots[current].classList.remove('active');
@@ -481,19 +496,30 @@ function initHeroSlider() {
           dots[current].classList.add('active');
           dots[current].setAttribute('aria-selected', 'true');
         }
+      }, 800);
 
-        // Phase 2: spark flash
-        spark.classList.remove('dark');
+      setTimeout(function () {
+        // Phase 2: Spark burst + streaks + ring + shake
+        bg.classList.add('spark-shake');
+        spark.classList.remove('phase1');
         void spark.offsetWidth;
-        spark.classList.add('flash');
+        spark.classList.add('phase2');
+      }, 900);
 
-        setTimeout(function () {
-          spark.classList.remove('flash');
-          transitioning = false;
-        }, 1200);
-      }, 500);
+      setTimeout(function () {
+        // Phase 3: Curtain falls, reveal new slide
+        spark.classList.remove('phase2');
+        void spark.offsetWidth;
+        spark.classList.add('phase3');
+      }, 1800);
+
+      setTimeout(function () {
+        clearSpark();
+        transitioning = false;
+      }, 3200);
+
     } else {
-      // Reduced motion: simple instant swap
+      // Reduced motion
       slides[current].classList.remove('active');
       if (dots[current]) {
         dots[current].classList.remove('active');
@@ -521,19 +547,6 @@ function initHeroSlider() {
 
   function stopAuto() {
     if (interval) { clearInterval(interval); interval = null; }
-  }
-
-  // Preload next slide image
-  function preloadNext() {
-    var nextIdx = (current + 1) % totalSlides;
-    var nextSlide = slides[nextIdx];
-    if (nextSlide) {
-      var img = nextSlide.querySelector('img');
-      if (img && img.dataset.src) {
-        img.src = img.dataset.src;
-        delete img.dataset.src;
-      }
-    }
   }
 
   // Arrow controls
