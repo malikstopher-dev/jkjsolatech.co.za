@@ -2685,11 +2685,13 @@ button {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 0.6s ease-in-out;
+  transform: scale(1.15);
+  transition: opacity 0.8s ease-in-out, transform 4s ease-out;
 }
 
 .hero-bg .hero-slide.active {
   opacity: 1;
+  transform: scale(1);
 }
 
 .hero-bg .hero-slide img,
@@ -2700,175 +2702,62 @@ button {
   object-position: center center;
 }
 
-/* ── Hero Spark Transition ── */
+/* ── Hero Zoom Transition ── */
 .hero-spark {
   position: absolute;
   inset: 0;
   z-index: 5;
   pointer-events: none;
-  opacity: 0;
 }
 
-/* Dark curtain overlay */
 .hero-spark::before {
   content: '';
   position: absolute;
   inset: 0;
   background: #05070a;
   opacity: 0;
+  transition: opacity 0.6s ease-in-out;
 }
 
-/* Central spark orb */
-.hero-spark::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow:
-    0 0 20px 10px rgba(212, 168, 67, 1),
-    0 0 60px 30px rgba(212, 168, 67, 0.8),
-    0 0 120px 60px rgba(212, 168, 67, 0.5),
-    0 0 200px 100px rgba(255, 255, 255, 0.3);
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-}
-
-/* Phase 1: Dark curtain rises */
 .hero-spark.phase1::before {
-  animation: curtainRise 2s ease-in-out forwards;
+  opacity: 1;
 }
 
-/* Phase 2: Spark burst */
-.hero-spark.phase2::after {
-  animation: sparkBurst 1.6s ease-out forwards;
-}
-
-/* Phase 3: Flash and fade */
 .hero-spark.phase3::before {
-  animation: curtainFall 1.4s ease-in-out forwards;
-}
-
-/* Shake on the hero container */
-.hero-bg.spark-shake {
-  animation: heroShake 0.4s ease-out;
-}
-
-/* Horizontal light streak */
-.hero-spark .spark-streak {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 1), rgba(255, 255, 255, 1), rgba(212, 168, 67, 1), transparent);
-  transform: translate(-50%, -50%);
   opacity: 0;
-  pointer-events: none;
 }
 
-.hero-spark.phase2 .spark-streak {
-  animation: streakExpand 1s 0.1s ease-out forwards;
+/* Outgoing slide zoom in + fade */
+.hero-bg .hero-slide.zoom-out {
+  opacity: 1;
+  transform: scale(1.3);
+  transition: opacity 0.7s ease-in, transform 0.7s ease-in;
+  z-index: 2;
 }
 
-/* Vertical light streak */
-.hero-spark .spark-streak-v {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2px;
-  height: 0;
-  background: linear-gradient(180deg, transparent, rgba(212, 168, 67, 1), rgba(255, 255, 255, 1), rgba(212, 168, 67, 1), transparent);
-  transform: translate(-50%, -50%);
+/* Incoming slide starts zoomed in, settles to normal */
+.hero-bg .hero-slide.zoom-in {
   opacity: 0;
-  pointer-events: none;
+  transform: scale(1.2);
+  transition: none;
 }
 
-.hero-spark.phase2 .spark-streak-v {
-  animation: streakExpandV 1s 0.1s ease-out forwards;
-}
-
-/* Expanding ring */
-.hero-spark .spark-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  border: 2px solid rgba(212, 168, 67, 0.8);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.hero-spark.phase2 .spark-ring {
-  animation: ringExpand 1.2s 0.15s ease-out forwards;
-}
-
-@keyframes curtainRise {
-  0%   { opacity: 0; }
-  40%  { opacity: 1; }
-  100% { opacity: 1; }
-}
-
-@keyframes curtainFall {
-  0%   { opacity: 1; }
-  30%  { opacity: 0.8; }
-  100% { opacity: 0; }
-}
-
-@keyframes sparkBurst {
-  0%   { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-  10%  { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  25%  { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
-  50%  { transform: translate(-50%, -50%) scale(40); opacity: 0.6; }
-  70%  { transform: translate(-50%, -50%) scale(80); opacity: 0.2; }
-  100% { transform: translate(-50%, -50%) scale(120); opacity: 0; }
-}
-
-@keyframes streakExpand {
-  0%   { width: 0; opacity: 0; }
-  15%  { width: 0; opacity: 1; }
-  50%  { width: 100vw; opacity: 1; }
-  100% { width: 100vw; opacity: 0; }
-}
-
-@keyframes streakExpandV {
-  0%   { height: 0; opacity: 0; }
-  15%  { height: 0; opacity: 1; }
-  50%  { height: 100vh; opacity: 1; }
-  100% { height: 100vh; opacity: 0; }
-}
-
-@keyframes ringExpand {
-  0%   { width: 10px; height: 10px; opacity: 1; border-width: 3px; }
-  50%  { opacity: 0.6; border-width: 1px; }
-  100% { width: 150vw; height: 150vw; opacity: 0; border-width: 0.5px; }
-}
-
-@keyframes heroShake {
-  0%   { transform: translate(0, 0); }
-  15%  { transform: translate(-3px, 2px); }
-  30%  { transform: translate(3px, -2px); }
-  45%  { transform: translate(-2px, -1px); }
-  60%  { transform: translate(2px, 1px); }
-  75%  { transform: translate(-1px, 0); }
-  100% { transform: translate(0, 0); }
+.hero-bg .hero-slide.zoom-in.active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.8s ease-out 0.1s, transform 3.5s ease-out 0.1s;
+  z-index: 3;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-spark.phase1::before,
-  .hero-spark.phase2::after,
-  .hero-spark.phase3::before,
-  .hero-spark.phase2 .spark-streak,
-  .hero-spark.phase2 .spark-streak-v,
-  .hero-spark.phase2 .spark-ring,
-  .hero-bg.spark-shake {
-    animation: none !important;
+  .hero-bg .hero-slide {
+    transition: opacity 0.8s ease-in-out !important;
+    transform: none !important;
+  }
+  .hero-bg .hero-slide.zoom-out,
+  .hero-bg .hero-slide.zoom-in.active {
+    transition: opacity 0.8s ease-in-out !important;
+    transform: none !important;
   }
 }
 
