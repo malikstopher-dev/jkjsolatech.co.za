@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0A0C10"/>
+  <path d="M32 6 L54 16 V32 C54 46 44 56 32 58 C20 56 10 46 10 32 V16 Z" fill="none" stroke="#C9A227" stroke-width="3"/>
+  <path d="M32 14 L48 22 V32 C48 42 40 50 32 52 C24 50 16 42 16 32 V22 Z" fill="#0F1216"/>
+  <text x="32" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#C9A227">JKJ</text>
+</svg>
