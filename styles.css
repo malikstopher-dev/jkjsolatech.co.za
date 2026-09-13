@@ -2685,7 +2685,7 @@ button {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .hero-bg .hero-slide.active {
@@ -2698,6 +2698,86 @@ button {
   height: 100%;
   object-fit: cover;
   object-position: center center;
+}
+
+/* ── Hero Spark Transition ── */
+.hero-spark {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hero-spark.dark {
+  animation: sparkDark 1.2s ease-in-out forwards;
+}
+
+.hero-spark.flash {
+  animation: sparkFlash 1.2s ease-in-out forwards;
+}
+
+.hero-spark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 7, 10, 0.95);
+  opacity: 0;
+}
+
+.hero-spark.dark::before {
+  animation: sparkCurtain 1.2s ease-in-out forwards;
+}
+
+.hero-spark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 168, 67, 1) 0%, rgba(212, 168, 67, 0.6) 30%, rgba(255, 255, 255, 0.9) 50%, rgba(212, 168, 67, 0.3) 70%, transparent 100%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.hero-spark.flash::after {
+  animation: sparkBurst 1.2s ease-out forwards;
+}
+
+@keyframes sparkCurtain {
+  0%   { opacity: 0; }
+  15%  { opacity: 0.95; }
+  50%  { opacity: 0.95; }
+  70%  { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+@keyframes sparkBurst {
+  0%   { width: 0; height: 0; opacity: 0; }
+  20%  { width: 0; height: 0; opacity: 0; }
+  35%  { width: 120px; height: 120px; opacity: 1; }
+  50%  { width: 800px; height: 800px; opacity: 0.8; }
+  65%  { width: 2000px; height: 2000px; opacity: 0.3; }
+  100% { width: 3000px; height: 3000px; opacity: 0; }
+}
+
+@keyframes sparkDark {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-spark.dark,
+  .hero-spark.flash {
+    animation: none !important;
+  }
+  .hero-spark.dark::before,
+  .hero-spark.flash::after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
 }
 
 /* Directional overlay — left-heavy for text, right bright for photography */

@@ -438,6 +438,7 @@ function initHeroSlider() {
   if (!bg) return;
 
   var slides = bg.querySelectorAll('.hero-slide');
+  var spark = document.getElementById('heroSpark');
   var dots = document.querySelectorAll('.hero-dot');
   var prevBtn = document.querySelector('.hero-prev');
   var nextBtn = document.querySelector('.hero-next');
@@ -446,21 +447,65 @@ function initHeroSlider() {
   var interval = null;
   var INTERVAL_MS = 5500;
   var paused = false;
+  var transitioning = false;
 
   if (totalSlides < 2) return;
 
   function goTo(index) {
-    if (index === current) return;
-    slides[current].classList.remove('active');
-    if (dots[current]) {
-      dots[current].classList.remove('active');
-      dots[current].setAttribute('aria-selected', 'false');
+    if (index === current || transitioning) return;
+    transitioning = true;
+
+    var nextIdx = (index + totalSlides) % totalSlides;
+
+    // Remove previous spark classes
+    if (spark) {
+      spark.classList.remove('dark', 'flash');
     }
-    current = (index + totalSlides) % totalSlides;
-    slides[current].classList.add('active');
-    if (dots[current]) {
-      dots[current].classList.add('active');
-      dots[current].setAttribute('aria-selected', 'true');
+
+    // Phase 1: dark curtain + hide current slide
+    if (spark && !prefersReducedMotion()) {
+      // Force reflow so animation restarts
+      void spark.offsetWidth;
+      spark.classList.add('dark');
+
+      setTimeout(function () {
+        // Swap slides while dark
+        slides[current].classList.remove('active');
+        if (dots[current]) {
+          dots[current].classList.remove('active');
+          dots[current].setAttribute('aria-selected', 'false');
+        }
+        current = nextIdx;
+        slides[current].classList.add('active');
+        if (dots[current]) {
+          dots[current].classList.add('active');
+          dots[current].setAttribute('aria-selected', 'true');
+        }
+
+        // Phase 2: spark flash
+        spark.classList.remove('dark');
+        void spark.offsetWidth;
+        spark.classList.add('flash');
+
+        setTimeout(function () {
+          spark.classList.remove('flash');
+          transitioning = false;
+        }, 1200);
+      }, 500);
+    } else {
+      // Reduced motion: simple instant swap
+      slides[current].classList.remove('active');
+      if (dots[current]) {
+        dots[current].classList.remove('active');
+        dots[current].setAttribute('aria-selected', 'false');
+      }
+      current = nextIdx;
+      slides[current].classList.add('active');
+      if (dots[current]) {
+        dots[current].classList.add('active');
+        dots[current].setAttribute('aria-selected', 'true');
+      }
+      transitioning = false;
     }
   }
 
