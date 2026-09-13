@@ -472,13 +472,13 @@ function initHeroSlider() {
       // 1. Outgoing zooms in + fades
       outgoing.classList.add('zoom-out');
 
-      // 2. Dark curtain
+      // 2. Dark curtain rises
       if (spark) {
         void spark.offsetWidth;
         spark.classList.add('phase1');
       }
 
-      // 3. After curtain up, swap slides
+      // 3. Swap slides while dark
       setTimeout(function () {
         outgoing.classList.remove('active', 'zoom-out');
         if (dots[current]) {
@@ -487,31 +487,29 @@ function initHeroSlider() {
         }
 
         current = nextIdx;
-
-        // Incoming starts zoomed in
         incoming.classList.add('zoom-in');
         incoming.classList.add('active');
         if (dots[current]) {
           dots[current].classList.add('active');
           dots[current].setAttribute('aria-selected', 'true');
         }
-      }, 600);
+      }, 500);
 
-      // 4. Curtain falls, new slide settles
+      // 4. Dark curtain falls — slide is already fading in
       setTimeout(function () {
         if (spark) {
           spark.classList.remove('phase1');
           void spark.offsetWidth;
           spark.classList.add('phase3');
         }
-      }, 700);
+      }, 600);
 
-      // 5. Clean up
+      // 5. Clean up after settle completes
       setTimeout(function () {
         incoming.classList.remove('zoom-in');
         if (spark) spark.classList.remove('phase3');
         transitioning = false;
-      }, 4200);
+      }, 4500);
 
     } else {
       // Reduced motion
