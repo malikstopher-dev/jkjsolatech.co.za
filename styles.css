@@ -3803,8 +3803,9 @@ button {
   }
 
   .page-hero {
-    min-height: 320px;
-    height: clamp(320px, 50vw, 400px);
+    min-height: 100vh;
+    padding-top: 140px;
+    padding-bottom: 60px;
     align-items: center;
   }
 
@@ -3879,8 +3880,9 @@ button {
   }
 
   .page-hero {
-    min-height: 420px;
-    height: auto;
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 40px;
   }
 
   .page-hero-content h1 {
@@ -4222,11 +4224,11 @@ button {
    ============================================================ */
 .page-hero {
   position: relative;
-  min-height: 360px;
-  height: clamp(360px, 36vw, 470px);
+  min-height: 100vh;
+  padding-top: 160px;
+  padding-bottom: 80px;
   display: flex;
   align-items: center;
-  padding: 0;
   overflow: hidden;
 }
 
