@@ -3800,15 +3800,19 @@ button {
   }
 
   .page-hero {
-    min-height: 100vh;
-    padding-top: 110px;
-    padding-bottom: 60px;
-    align-items: center;
+    min-height: 100svh;
+    padding-top: 0;
+    padding-bottom: 0;
+    align-items: flex-end;
+  }
+
+  .page-hero-content {
+    padding-bottom: 48px;
   }
 
   .page-hero-content h1 {
-    font-size: clamp(32px, 7vw, 48px);
-    line-height: 1.05;
+    font-size: clamp(30px, 7vw, 44px);
+    line-height: 1.02;
   }
 
   .page-hero-content p {
@@ -3845,6 +3849,11 @@ button {
     width: 14px;
     height: 14px;
   }
+
+  /* WhatsApp: raise to avoid hero text collision */
+  .whatsapp-float {
+    bottom: 80px;
+  }
 }
 
 /* --- 480px: Small Mobile --- */
@@ -3877,19 +3886,26 @@ button {
   }
 
   .page-hero {
-    min-height: 100vh;
-    padding-top: 100px;
-    padding-bottom: 40px;
+    min-height: 100svh;
+    padding-top: 0;
+    padding-bottom: 0;
+    align-items: flex-end;
+  }
+
+  .page-hero-content {
+    padding-bottom: 36px;
+    width: min(100% - 40px, 1180px);
   }
 
   .page-hero-content h1 {
-    font-size: clamp(32px, 9vw, 42px);
-    line-height: 1;
+    font-size: clamp(28px, 8.2vw, 40px);
+    line-height: 0.98;
+    max-width: 90%;
   }
 
   .page-hero-content p {
     font-size: 15px;
-    line-height: 1.55;
+    line-height: 1.45;
   }
 
   .areas-grid {
@@ -3984,6 +4000,18 @@ button {
     height: 140px;
     width: calc(100% + 40px);
     margin: -20px -20px 16px -20px;
+  }
+
+  /* About page: keep all 3 team members visible */
+  .page-hero-bg picture img[alt*="team"],
+  .page-hero-bg img[alt*="team"] {
+    object-position: 50% 25%;
+  }
+
+  /* Raise WhatsApp to avoid hero text collision */
+  .page-hero ~ .whatsapp-float,
+  .whatsapp-float {
+    bottom: 72px;
   }
 }
 
@@ -4221,11 +4249,11 @@ button {
    ============================================================ */
 .page-hero {
   position: relative;
-  min-height: 100vh;
-  padding-top: 160px;
-  padding-bottom: 80px;
+  min-height: 100svh;
+  padding-top: 0;
+  padding-bottom: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   overflow: hidden;
 }
 
@@ -4249,11 +4277,12 @@ button {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    90deg,
+    to top,
     rgba(5, 6, 8, 0.72) 0%,
-    rgba(5, 6, 8, 0.50) 34%,
-    rgba(5, 6, 8, 0.16) 68%,
-    rgba(5, 6, 8, 0.04) 100%
+    rgba(5, 6, 8, 0.46) 18%,
+    rgba(5, 6, 8, 0.18) 35%,
+    rgba(5, 6, 8, 0.05) 52%,
+    transparent 68%
   );
 }
 
@@ -4262,6 +4291,7 @@ button {
   z-index: 1;
   width: min(100% - 48px, 1180px);
   margin-inline: auto;
+  padding-bottom: 60px;
 }
 
 .page-hero-content .page-header-breadcrumb,
@@ -4269,9 +4299,9 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 16px;
-  font-size: 0.82rem;
-  color: var(--dim);
+  margin-bottom: 12px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .page-hero-content .page-header-breadcrumb a,
@@ -4286,23 +4316,24 @@ button {
 }
 
 .page-hero-content h1 {
-  font-size: clamp(44px, 4vw, 60px);
+  font-size: clamp(36px, 4vw, 60px);
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.025em;
   max-width: 900px;
   text-wrap: balance;
   margin-bottom: 12px;
-}
-
-.page-hero-content h1 span {
   color: var(--white);
 }
 
+.page-hero-content h1 span {
+  color: var(--gold);
+}
+
 .page-hero-content p {
-  font-size: clamp(16px, 1.35vw, 19px);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.82);
-  max-width: 720px;
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 540px;
   margin-bottom: 0;
 }
