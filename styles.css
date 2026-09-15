@@ -4004,41 +4004,21 @@ button {
     margin: -20px -20px 16px -20px;
   }
 
-  /* About page: keep all 3 team members visible */
-  .page-hero-bg picture img[alt*="team"],
-  .page-hero-bg img[alt*="team"] {
+  /* About page: keep all 3 team members visible on portrait mobile */
+  .page-hero--about img {
     object-position: 50% 25%;
   }
 
-  /* Service pages: keep main subject centered */
-  .page-hero-bg picture img[alt*="solar"],
-  .page-hero-bg img[alt*="solar"] {
-    object-position: 50% 30%;
-  }
-
-  .page-hero-bg picture img[alt*="CCTV"],
-  .page-hero-bg img[alt*="CCTV"],
-  .page-hero-bg picture img[alt*="camera"],
-  .page-hero-bg img[alt*="camera"] {
-    object-position: 50% 40%;
-  }
-
-  .page-hero-bg picture img[alt*="electrician"],
-  .page-hero-bg img[alt*="electrician"] {
-    object-position: 50% 50%;
-  }
-
-  .page-hero-bg picture img[alt*="smart"],
-  .page-hero-bg img[alt*="smart"] {
-    object-position: 50% 55%;
-  }
-
-  .page-hero-bg picture img[alt*="import"],
-  .page-hero-bg img[alt*="import"],
-  .page-hero-bg picture img[alt*="port"],
-  .page-hero-bg img[alt*="port"] {
-    object-position: 50% 45%;
-  }
+  /* Service pages: mobile portrait positions for 800×1200 images */
+  .page-hero--solar img { object-position: 50% 30%; }
+  .page-hero--cctv img { object-position: 50% 40%; }
+  .page-hero--electrical img { object-position: 50% 45%; }
+  .page-hero--smart img { object-position: 50% 50%; }
+  .page-hero--import-export img { object-position: 50% 40%; }
+  .page-hero--gates img { object-position: 50% 50%; }
+  .page-hero--access img { object-position: 50% 40%; }
+  .page-hero--it img { object-position: 50% 40%; }
+  .page-hero--web img { object-position: 50% 40%; }
 
   /* Raise WhatsApp to avoid hero text collision */
   .page-hero ~ .whatsapp-float,
@@ -4304,6 +4284,18 @@ button {
   height: 100%;
   object-fit: cover;
 }
+
+/* Desktop object-position per page (1600×900 landscape images) */
+.page-hero--solar img { object-position: 50% 40%; }
+.page-hero--cctv img { object-position: 50% 30%; }
+.page-hero--electrical img { object-position: 50% 35%; }
+.page-hero--smart img { object-position: 50% 40%; }
+.page-hero--import-export img { object-position: 50% 50%; }
+.page-hero--gates img { object-position: 50% 55%; }
+.page-hero--access img { object-position: 50% 45%; }
+.page-hero--it img { object-position: 50% 35%; }
+.page-hero--web img { object-position: 50% 40%; }
+.page-hero--about img { object-position: 50% 50%; }
 
 .page-hero-bg::after {
   content: '';
