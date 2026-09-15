@@ -3800,14 +3800,15 @@ button {
   }
 
   .page-hero {
+    min-height: 100vh;
     min-height: 100svh;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 70px;
+    padding-bottom: 90px;
     align-items: flex-end;
   }
 
   .page-hero-content {
-    padding-bottom: 48px;
+    padding-bottom: 0;
   }
 
   .page-hero-content h1 {
@@ -3886,14 +3887,15 @@ button {
   }
 
   .page-hero {
+    min-height: 100vh;
     min-height: 100svh;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 60px;
+    padding-bottom: 80px;
     align-items: flex-end;
   }
 
   .page-hero-content {
-    padding-bottom: 36px;
+    padding-bottom: 0;
     width: min(100% - 40px, 1180px);
   }
 
@@ -4006,6 +4008,36 @@ button {
   .page-hero-bg picture img[alt*="team"],
   .page-hero-bg img[alt*="team"] {
     object-position: 50% 25%;
+  }
+
+  /* Service pages: keep main subject centered */
+  .page-hero-bg picture img[alt*="solar"],
+  .page-hero-bg img[alt*="solar"] {
+    object-position: 50% 30%;
+  }
+
+  .page-hero-bg picture img[alt*="CCTV"],
+  .page-hero-bg img[alt*="CCTV"],
+  .page-hero-bg picture img[alt*="camera"],
+  .page-hero-bg img[alt*="camera"] {
+    object-position: 50% 40%;
+  }
+
+  .page-hero-bg picture img[alt*="electrician"],
+  .page-hero-bg img[alt*="electrician"] {
+    object-position: 50% 50%;
+  }
+
+  .page-hero-bg picture img[alt*="smart"],
+  .page-hero-bg img[alt*="smart"] {
+    object-position: 50% 55%;
+  }
+
+  .page-hero-bg picture img[alt*="import"],
+  .page-hero-bg img[alt*="import"],
+  .page-hero-bg picture img[alt*="port"],
+  .page-hero-bg img[alt*="port"] {
+    object-position: 50% 45%;
   }
 
   /* Raise WhatsApp to avoid hero text collision */
@@ -4249,9 +4281,10 @@ button {
    ============================================================ */
 .page-hero {
   position: relative;
+  min-height: 100vh;
   min-height: 100svh;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-top: 80px;
+  padding-bottom: 100px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -4278,11 +4311,11 @@ button {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(5, 6, 8, 0.72) 0%,
-    rgba(5, 6, 8, 0.46) 18%,
-    rgba(5, 6, 8, 0.18) 35%,
-    rgba(5, 6, 8, 0.05) 52%,
-    transparent 68%
+    rgba(5, 6, 8, 0.65) 0%,
+    rgba(5, 6, 8, 0.35) 15%,
+    rgba(5, 6, 8, 0.12) 30%,
+    rgba(5, 6, 8, 0.03) 50%,
+    transparent 70%
   );
 }
 
