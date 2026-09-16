@@ -3851,15 +3851,6 @@ button {
     height: 14px;
   }
 
-  /* Mobile: contain homepage slideshow images to prevent cropping */
-  .hero-bg {
-    background: #050608;
-  }
-  .hero-bg .hero-slide img,
-  .hero-bg .hero-slide picture {
-    object-fit: contain;
-  }
-
   /* WhatsApp: raise to avoid hero text collision */
   .whatsapp-float {
     bottom: 80px;
@@ -3917,15 +3908,6 @@ button {
   .page-hero-content p {
     font-size: 15px;
     line-height: 1.45;
-  }
-
-  /* Mobile: contain instead of cover to prevent cropping */
-  .page-hero-bg {
-    background: #050608;
-  }
-  .page-hero-bg picture,
-  .page-hero-bg img {
-    object-fit: contain;
   }
 
   .areas-grid {
