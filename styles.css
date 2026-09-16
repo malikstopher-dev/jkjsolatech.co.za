@@ -2699,6 +2699,17 @@ button {
   object-position: center center;
 }
 
+/* Desktop object-position per slideshow slide */
+.hero-slide[data-index="0"] img { object-position: 50% 50%; }
+.hero-slide[data-index="1"] img { object-position: 50% 50%; }
+.hero-slide[data-index="2"] img { object-position: 50% 50%; }
+.hero-slide[data-index="3"] img { object-position: 50% 50%; }
+.hero-slide[data-index="4"] img { object-position: 50% 50%; }
+.hero-slide[data-index="5"] img { object-position: 50% 50%; }
+.hero-slide[data-index="6"] img { object-position: 50% 50%; }
+.hero-slide[data-index="7"] img { object-position: 50% 50%; }
+.hero-slide[data-index="8"] img { object-position: 50% 50%; }
+
 /* ── Hero Zoom Transition ── */
 .hero-spark {
   position: absolute;
@@ -3851,6 +3862,17 @@ button {
     height: 14px;
   }
 
+  /* Mobile slideshow object-position per slide */
+  .hero-slide[data-index="0"] img { object-position: 50% 30%; }
+  .hero-slide[data-index="1"] img { object-position: 45% 45%; }
+  .hero-slide[data-index="2"] img { object-position: 55% 35%; }
+  .hero-slide[data-index="3"] img { object-position: 65% 50%; }
+  .hero-slide[data-index="4"] img { object-position: 35% 40%; }
+  .hero-slide[data-index="5"] img { object-position: 50% 50%; }
+  .hero-slide[data-index="6"] img { object-position: 50% 40%; }
+  .hero-slide[data-index="7"] img { object-position: 60% 40%; }
+  .hero-slide[data-index="8"] img { object-position: 50% 40%; }
+
   /* WhatsApp: raise to avoid hero text collision */
   .whatsapp-float {
     bottom: 80px;
@@ -4011,14 +4033,14 @@ button {
 
   /* Service pages: mobile portrait positions for 800×1200 images */
   .page-hero--solar img { object-position: 50% 30%; }
-  .page-hero--cctv img { object-position: 50% 40%; }
-  .page-hero--electrical img { object-position: 50% 45%; }
+  .page-hero--cctv img { object-position: 55% 35%; }
+  .page-hero--electrical img { object-position: 45% 45%; }
   .page-hero--smart img { object-position: 50% 50%; }
   .page-hero--import-export img { object-position: 50% 40%; }
-  .page-hero--gates img { object-position: 50% 50%; }
-  .page-hero--access img { object-position: 50% 40%; }
+  .page-hero--gates img { object-position: 65% 50%; }
+  .page-hero--access img { object-position: 35% 40%; }
   .page-hero--it img { object-position: 50% 40%; }
-  .page-hero--web img { object-position: 50% 40%; }
+  .page-hero--web img { object-position: 60% 40%; }
 
   /* Raise WhatsApp to avoid hero text collision */
   .page-hero ~ .whatsapp-float,
