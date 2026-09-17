@@ -3830,7 +3830,7 @@ button {
   }
 
   .service-card-image {
-    height: 160px;
+    height: 200px;
   }
 
   .hero-controls {
@@ -4007,7 +4007,7 @@ button {
   }
 
   .service-card-image {
-    height: 140px;
+    height: 200px;
     width: calc(100% + 40px);
     margin: -20px -20px 16px -20px;
   }
