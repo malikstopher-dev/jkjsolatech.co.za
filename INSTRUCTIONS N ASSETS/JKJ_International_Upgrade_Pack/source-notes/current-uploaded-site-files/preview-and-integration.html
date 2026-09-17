@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKJ Solartech – Image Assets Preview & Integration Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600&display=swap');
+
+  :root {
+    --gold: #C9A227;
+    --gold-light: #E8C547;
+    --black: #0a0a0b;
+    --dark: #111114;
+    --mid: #1a1a20;
+    --text: #d4c9a8;
+    --muted: #6b6554;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────── */
+  .site-header {
+    background: var(--dark);
+    border-bottom: 1px solid rgba(201,162,39,0.25);
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .logo-mark {
+    width: 42px; height: 42px;
+    background: var(--gold);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+  .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: var(--gold-light); }
+  .logo-sub { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-top: -2px; }
+
+  /* ── HERO SECTION ─────────────────────────────────── */
+  .hero-section {
+    position: relative;
+    height: 520px;
+    overflow: hidden;
+  }
+  .hero-section img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.72) 0%, rgba(201,162,39,0.12) 60%, rgba(0,0,0,0.55) 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+  }
+  .hero-content {}
+  .hero-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    margin-bottom: 18px;
+  }
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 0.95;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .hero-headline span { color: var(--gold-light); }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    max-width: 440px;
+    line-height: 1.65;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    background: var(--gold);
+    color: #000;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .hero-cta:hover { background: var(--gold-light); }
+
+  /* ── SECTION TITLES ───────────────────────────────── */
+  .section { padding: 80px 40px; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 46px;
+    letter-spacing: 1.5px;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .section-title span { color: var(--gold-light); }
+  .section-line {
+    width: 60px; height: 2px;
+    background: var(--gold);
+    margin: 12px 0 40px;
+  }
+
+  /* ── SERVICES GRID ────────────────────────────────── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .service-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+  .service-card:hover img { transform: scale(1.06); }
+  .service-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+  }
+  .service-card:hover .service-card-overlay {
+    background: linear-gradient(to top, rgba(10,8,0,0.92) 0%, rgba(201,162,39,0.15) 50%, transparent 100%);
+  }
+  .service-card-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px 22px;
+  }
+  .service-icon {
+    width: 32px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 10px;
+    transition: width 0.3s;
+  }
+  .service-card:hover .service-icon { width: 50px; }
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .service-desc { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+  .service-arrow {
+    position: absolute;
+    top: 18px; right: 18px;
+    width: 32px; height: 32px;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-size: 14px;
+    opacity: 0;
+    transform: translate(4px,-4px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .service-card:hover .service-arrow { opacity: 1; transform: translate(0,0); }
+
+  /* ── ABOUT SECTION ────────────────────────────────── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+    height: 460px;
+  }
+  .about-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .about-img-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: -16px; right: -16px;
+    width: 60%; height: 60%;
+    border: 2px solid var(--gold);
+    pointer-events: none;
+  }
+  .about-badge {
+    position: absolute;
+    bottom: 30px; left: -20px;
+    background: var(--gold);
+    color: #000;
+    padding: 16px 24px;
+    z-index: 2;
+  }
+  .about-badge-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+  }
+  .about-badge-label { font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+  .about-text p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .about-stats {
+    display: flex; gap: 40px;
+    margin: 30px 0;
+    padding: 24px 0;
+    border-top: 1px solid rgba(201,162,39,0.2);
+    border-bottom: 1px solid rgba(201,162,39,0.2);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .stat-label { font-size: 11px; letter-spacing: 1px; color: var(--muted); margin-top: 2px; }
+
+  /* ── HTML CODE BLOCK ─────────────────────────────── */
+  .code-section {
+    background: var(--mid);
+    padding: 60px 40px;
+    border-top: 1px solid rgba(201,162,39,0.15);
+  }
+  .code-tabs {
+    display: flex; gap: 2px;
+    margin-bottom: 24px;
+  }
+  .code-tab {
+    padding: 8px 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-family: monospace;
+  }
+  .code-tab.active {
+    background: var(--gold);
+    color: #000;
+    border-color: var(--gold);
+    font-weight: 700;
+  }
+  .code-block {
+    background: #0d0d10;
+    border: 1px solid rgba(201,162,39,0.15);
+    padding: 28px;
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #b4c8a8;
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .code-block .tag { color: #6fa3ef; }
+  .code-block .attr { color: #e8c547; }
+  .code-block .val { color: #88c070; }
+  .code-block .comment { color: #555; }
+
+  /* ── FILE LIST ────────────────────────────────────── */
+  .file-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .file-item {
+    background: var(--dark);
+    border: 1px solid rgba(201,162,39,0.12);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .file-icon {
+    width: 32px; height: 32px;
+    background: rgba(201,162,39,0.12);
+    border: 1px solid rgba(201,162,39,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: var(--gold);
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+  .file-name { font-size: 11px; color: var(--text); line-height: 1.4; }
+  .file-size { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+  /* ── FOOTER NOTE ─────────────────────────────────── */
+  .footer-note {
+    background: rgba(201,162,39,0.06);
+    border-top: 1px solid rgba(201,162,39,0.2);
+    padding: 24px 40px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .footer-note strong { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- SITE HEADER MOCK -->
+<header class="site-header">
+  <div class="logo-mark"></div>
+  <div>
+    <div class="logo-text">JKJ SOLARTECH</div>
+    <div class="logo-sub">Solar · Security · Electrical · Johannesburg</div>
+  </div>
+</header>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="hero-section">
+  <img
+    src="assets/images/hero/hero-solar-security-johannesburg.webp"
+    alt="JKJ Solartech – Solar panel installation on Johannesburg residential rooftop at golden hour"
+    loading="eager"
+    fetchpriority="high"
+  />
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <div class="hero-tag">Johannesburg · Gauteng</div>
+      <div class="hero-headline">
+        Power. Security.<br><span>Precision.</span>
+      </div>
+      <p class="hero-sub">Professional solar, CCTV, electrical, gates, access control and network installations across Gauteng.</p>
+      <a href="#services" class="hero-cta">Our Services →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ─────────────────────────────────────── -->
+<section class="section" id="services">
+  <div class="section-label">What We Do</div>
+  <div class="section-title">Our <span>Services</span></div>
+  <div class="section-line"></div>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <img src="assets/images/services/service-solar-panels.webp"
+           alt="Solar panel array installed on residential rooftop in Johannesburg"
+           loading="lazy" />
+      <div class="service-card-overlay"></div>
+      <div class="service-card-content">
+        <div class="service-icon"></div>
+        <div class="service-name">Solar PV Systems</div>
+        <div class="service-desc">Grid-tied, off-grid & hybrid solar solutions</div>
+      </div>
+      <div class="service-arrow">↗</div>
+    </div>
+
+    <div class="service-card">
+      <img src="assets/images/services/service-inverter-battery.webp"
+           alt="Inverter and lithium battery backup system installation"
+           loading="lazy" />
+      <div class="service-card-overlay"></div>
+      <div class="service-card-content">
+        <div class="service-icon"></div>
+        <div class="service-name">Inverter & Battery Backup</div>
+        <div class="service-desc">Loadshedding solutions & energy storage</div>
+      </div>
+      <div class="service-arrow">↗</div>
+    </div>
+
+    <div class="service-card">
+      <img src="assets/images/services/service-electrical-db-board.webp"
+           alt="Clean DB board installation and electrical work"
+           loading="lazy" />
+      <div class="service-card-overlay"></div>
+      <div class="service-card-content">
+        <div class="service-icon"></div>
+        <div class="service-name">Electrical Installations</div>
+        <div class="service-desc">DB boards, wiring & compliance certificates</div>
+      </div>
+      <div class="service-arrow">↗</div>
+    </div>
+
+    <div class="service-card">
+      <img src="assets/images/services/service-cctv-installation.webp"
+           alt="CCTV security camera installation on residential property"
+           loading="lazy" />
+      <div class="service-card-overlay"></div>
+      <div class="service-card-content">
+        <div class="service-icon"></div>
+        <div class="service-name">CCTV Systems</div>
+        <div class="service-desc">HD surveillance cameras & monitoring</div>
+      </div>
+      <div class="service-arrow">↗</div>
+    </div>
+
+    <div class="service-card">
+      <img src="assets/images/services/service-automated-gate.webp"
+           alt="Automated sliding gate motor installation with driveway access"
+           loading="lazy" />
+      <div class="service-card-overlay"></div>
+      <div class="service-card-content">
+        <div class="service-icon"></div>
+        <div class="service-name">Automated Gates</div>
+        <div class="service-desc">Sliding & swing gate motor systems</div>
+      </div>
+      <div class="service-arrow">↗</div>
+    </div>
+
+    <div class="service-card">
+      <img src="assets/images/services/service-access-control.webp"
+           alt="Access control keypad and intercom installation"
+           loading="lazy" />
+      <div class="service-card-overlay"></div>
+      <div class="service-card-content">
+        <div class="service-icon"></div>
+        <div class="service-name">Access Control</div>
+        <div class="service-desc">Keypads, intercoms & biometric entry</div>
+      </div>
+      <div class="service-arrow">↗</div>
+    </div>
+
+  </div>
+
+  <!-- Network card full width -->
+  <div style="margin-top:2px">
+    <div class="service-card" style="height:200px">
+      <img src="assets/images/services/service-network-fibre.webp"
+           alt="Network cabling and fibre installation with patch panel and switches"
+           loading="lazy"
+           style="object-position: center 30%;" />
+      <div class="service-card-overlay"></div>
+      <div class="service-card-content">
+        <div class="service-icon"></div>
+        <div class="service-name">Network & Fibre</div>
+        <div class="service-desc">Structured cabling, LAN, fibre & Wi-Fi infrastructure</div>
+      </div>
+      <div class="service-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ──────────────────────────────────────────── -->
+<section class="section" style="background:var(--dark);">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <img src="assets/images/about/about-technician-installation.webp"
+           alt="JKJ Solartech certified technicians installing solar panels on Johannesburg rooftop"
+           loading="lazy" />
+      <div class="about-badge">
+        <div class="about-badge-num">10+</div>
+        <div class="about-badge-label">Years Experience</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">Who We Are</div>
+      <div class="section-title">Built on <span>Trust</span></div>
+      <div class="section-line"></div>
+      <p>JKJ Solartech is a Johannesburg-based installation company specialising in solar energy, electrical, security, access control, and network infrastructure.</p>
+      <p>Every installation is handled by our certified team — clean, compliant, and built to last.</p>
+      <div class="about-stats">
+        <div><div class="stat-num">500+</div><div class="stat-label">Projects Completed</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Compliance Certified</div></div>
+        <div><div class="stat-num">24/7</div><div class="stat-label">Support Available</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CODE INTEGRATION GUIDE ──────────────────────── -->
+<section class="code-section">
+  <div class="section-label">Developer Guide</div>
+  <div class="section-title">Drop-in HTML <span>Integration</span></div>
+  <div class="section-line"></div>
+
+  <div class="code-tabs">
+    <div class="code-tab active">hero</div>
+    <div class="code-tab">services</div>
+    <div class="code-tab">about</div>
+  </div>
+
+  <div class="code-block">
+<span class="comment">&lt;!-- HERO IMAGE — place inside your existing hero section wrapper --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"hero-bg"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span>
+    <span class="attr">src</span>=<span class="val">"assets/images/hero/hero-solar-security-johannesburg.webp"</span>
+    <span class="attr">alt</span>=<span class="val">"Solar installation on Johannesburg residential rooftop at golden hour"</span>
+    <span class="attr">loading</span>=<span class="val">"eager"</span>
+    <span class="attr">fetchpriority</span>=<span class="val">"high"</span>
+    <span class="attr">width</span>=<span class="val">"1920"</span>
+    <span class="attr">height</span>=<span class="val">"1080"</span>
+  <span class="tag">/&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- CSS: keep your existing hero overlay, just add: --&gt;</span>
+<span class="attr">.hero-bg img</span> {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+<span class="comment">&lt;!-- SERVICE CARD EXAMPLE (repeat for each card) --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="val">"service-card"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span>
+    <span class="attr">src</span>=<span class="val">"assets/images/services/service-solar-panels.webp"</span>
+    <span class="attr">alt</span>=<span class="val">"Solar panel array installed on Johannesburg rooftop"</span>
+    <span class="attr">loading</span>=<span class="val">"lazy"</span>
+    <span class="attr">width</span>=<span class="val">"800"</span>
+    <span class="attr">height</span>=<span class="val">"600"</span>
+  <span class="tag">/&gt;</span>
+  <span class="comment">&lt;!-- rest of your card markup --&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+  </div>
+
+  <!-- File list -->
+  <div style="margin-top:40px">
+    <div class="section-label" style="margin-bottom:16px">Generated Image Files</div>
+    <div class="file-grid">
+      <div class="file-item">
+        <div class="file-icon">WP</div>
+        <div>
+          <div class="file-name">hero-solar-security-johannesburg.webp</div>
+          <div class="file-size">1920×1080 · /hero/</div>
+        </div>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">WP</div>
+        <div>
+          <div class="file-name">service-solar-panels.webp</div>
+          <div class="file-size">800×600 · /services/</div>
+        </div>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">WP</div>
+        <div>
+          <div class="file-name">service-inverter-battery.webp</div>
+          <div class="file-size">800×600 · /services/</div>
+        </div>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">WP</div>
+        <div>
+          <div class="file-name">service-electrical-db-board.webp</div>
+          <div class="file-size">800×600 · /services/</div>
+        </div>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">WP</div>
+        <div>
+          <div class="file-name">service-cctv-installation.webp</div>
+          <div class="file-size">800×600 · /services/</div>
+        </div>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">WP</div>
+        <div>
+          <div class="file-name">service-automated-gate.webp</div>
+          <div class="file-size">800×600 · /services/</div>
+        </div>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">WP</div>
+        <div>
+          <div class="file-name">service-access-control.webp</div>
+          <div class="file-size">800×600 · /services/</div>
+        </div>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">WP</div>
+        <div>
+          <div class="file-name">service-network-fibre.webp</div>
+          <div class="file-size">800×600 · /services/</div>
+        </div>
+      </div>
+      <div class="file-item">
+        <div class="file-icon">WP</div>
+        <div>
+          <div class="file-name">about-technician-installation.webp</div>
+          <div class="file-size">800×600 · /about/</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-note">
+  <strong>JKJ Solartech Image Pack v1.0</strong> · All images are WebP format · Optimised for web · Black/gold overlay compatible · Add to your project at <strong>assets/images/</strong>
+</div>
+
+</body>
+</html>

@@ -64,3 +64,47 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         }
     });
 });
+
+// ========================================
+// HERO TAGLINE TYPING ANIMATION
+// ========================================
+(function() {
+    var el = document.getElementById('heroTyped');
+    if (!el) return;
+    var phrases = [
+        'Powering Your World',
+        'Securing Your Tomorrow'
+    ];
+    var phraseIndex = 0;
+    var charIndex = 0;
+    var isDeleting = false;
+    var typeSpeed = 80;
+    var deleteSpeed = 40;
+    var pauseEnd = 2000;
+    var pauseStart = 600;
+
+    function type() {
+        var current = phrases[phraseIndex];
+        if (isDeleting) {
+            el.textContent = current.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            el.textContent = current.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        var speed = isDeleting ? deleteSpeed : typeSpeed;
+
+        if (!isDeleting && charIndex === current.length) {
+            speed = pauseEnd;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            speed = pauseStart;
+        }
+
+        setTimeout(type, speed);
+    }
+    type();
+})();

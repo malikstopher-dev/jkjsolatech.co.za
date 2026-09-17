@@ -191,7 +191,7 @@ button {
 }
 
 .section-title span {
-  color: var(--gold);
+  color: inherit;
 }
 
 .section-subtitle {
@@ -2962,74 +2962,60 @@ button {
 .hero-watermark .line2 { display: block; }
 .hero-watermark .line3 { display: block; }
 
-.hero-map {
+/* ── Hero Tagline Overlay ── */
+.hero-text-overlay {
   position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  width: 320px;
-  height: 280px;
-  z-index: 2;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
   pointer-events: none;
-  opacity: 0.8;
 }
 
-.hero-map-label {
-  position: absolute;
+.hero-tagline {
   font-family: var(--font-heading);
-  font-size: 0.68rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 600;
-}
-
-.hero-map-label.sa {
-  top: 55%;
-  right: 10%;
-  text-align: right;
-}
-
-.hero-map-label.drc {
-  top: 15%;
-  right: 30%;
-  text-align: right;
-}
-
-.hero-map-label .sub {
-  display: block;
-  font-size: 0.55rem;
-  color: var(--muted);
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
   letter-spacing: 2px;
-  margin-top: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 0 40px rgba(0,0,0,0.4);
+  line-height: 1.3;
+  margin: 0;
 }
 
-.hero-map-line {
-  position: absolute;
-  top: 30%;
-  right: 15%;
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  transform: rotate(-30deg);
-  opacity: 0.6;
+.hero-tagline-cursor {
+  display: inline-block;
+  animation: blink 0.8s step-end infinite;
+  color: var(--gold);
+  font-weight: 300;
 }
 
-.hero-map-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 12px rgba(212, 168, 67, 0.6);
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
-.hero-map-dot.sa { top: 58%; right: 8%; }
-.hero-map-dot.drc { top: 18%; right: 42%; }
+@media (max-width: 768px) {
+  .hero-text-overlay {
+    bottom: 18%;
+    width: 95%;
+  }
+  .hero-tagline {
+    font-size: clamp(1.1rem, 5vw, 1.6rem);
+    letter-spacing: 1px;
+  }
+}
 
-@media (max-width: 1024px) {
-  .hero-map { display: none; }
-  .hero-watermark { display: none; }
+@media (max-width: 480px) {
+  .hero-text-overlay {
+    bottom: 20%;
+  }
+  .hero-tagline {
+    font-size: clamp(0.95rem, 5.5vw, 1.3rem);
+  }
 }
 
 @media (max-width: 768px) {
