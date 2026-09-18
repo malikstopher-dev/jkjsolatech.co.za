@@ -930,7 +930,7 @@ button {
 }
 
 .about-content h2 span {
-  color: var(--gold);
+  color: inherit;
 }
 
 .about-content p {
@@ -1207,7 +1207,7 @@ button {
 }
 
 .drc-content h2 span {
-  color: var(--gold);
+  color: inherit;
 }
 
 .drc-content p {
@@ -1475,7 +1475,7 @@ button {
 }
 
 .contact-form h2 span {
-  color: var(--gold);
+  color: inherit;
 }
 
 .contact-form > p {
@@ -1843,7 +1843,7 @@ button {
 }
 
 .service-detail-content h2 span {
-  color: var(--gold);
+  color: inherit;
 }
 
 .service-detail-content h3 {
@@ -3805,7 +3805,7 @@ button {
   }
 
   .page-hero-content {
-    padding-bottom: 40px;
+    padding-bottom: 60px;
   }
 
   .page-hero-content h1 {
@@ -3908,7 +3908,7 @@ button {
   }
 
   .page-hero-content {
-    padding-bottom: 40px;
+    padding-bottom: 60px;
     width: min(100% - 40px, 1180px);
   }
 
@@ -4282,7 +4282,7 @@ button {
   min-height: 100vh;
   min-height: 100svh;
   padding-top: 80px;
-  padding-bottom: 100px;
+  padding-bottom: 140px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
