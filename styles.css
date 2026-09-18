@@ -1660,7 +1660,7 @@ button {
 }
 
 .page-header h1 span {
-  color: var(--gold);
+  color: inherit;
 }
 
 .page-header p {
@@ -3805,7 +3805,7 @@ button {
   }
 
   .page-hero-content {
-    padding-bottom: 0;
+    padding-bottom: 40px;
   }
 
   .page-hero-content h1 {
@@ -3908,7 +3908,7 @@ button {
   }
 
   .page-hero-content {
-    padding-bottom: 0;
+    padding-bottom: 40px;
     width: min(100% - 40px, 1180px);
   }
 
@@ -4370,7 +4370,7 @@ button {
 }
 
 .page-hero-content h1 span {
-  color: var(--gold);
+  color: inherit;
 }
 
 .page-hero-content p {
