@@ -3833,6 +3833,11 @@ button {
     height: 200px;
   }
 
+  .service-card-image img,
+  .service-card-image picture img {
+    object-fit: contain;
+  }
+
   .hero-controls {
     padding: 0 20px;
     bottom: 24px;
@@ -4007,9 +4012,14 @@ button {
   }
 
   .service-card-image {
-    height: 200px;
+    height: 220px;
     width: calc(100% + 40px);
     margin: -20px -20px 16px -20px;
+  }
+
+  .service-card-image img,
+  .service-card-image picture img {
+    object-fit: contain;
   }
 
   /* About page: keep all 3 team members visible on portrait mobile */
